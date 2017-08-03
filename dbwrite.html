@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<fieldset id="buildyourform">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dbwrite.css') }}">
+    <title>File Upload to DB</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/styles/js/dbwrite.js"></script>
+    </head>
+
+<body>
+
+<h1> Upload csv file in EMP table in MYSQL DB- manu </h1>
+<div class="form-group">
+<form action="/handle_data" method="post" enctype="multipart/form-data">
+    <input type="file" name="inputcsvFile" id ="uploadfile">
+    <div id="msg"></div>
+    <br/><br/>
+    <button id="download" onclick="FormValidate()">Upload Employee Data</button>
+</form>
+  <br/><br/>
+<form action="/download_data" method="post" enctype="multipart/form-data">
+    <button id="download">Download Employee Data</button>
+
+    <h1> Data Upload History </h1>
+     <table border="1" cellpadding="5" cellspacing="5">
+    {% for row in data %}
+        <tr>
+        {% for d in row %}
+            <td>{{ d }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+     </table>
+    </form>
+</div>
+
+
+</body>
+
+
+    </fieldset>
+</html>
+
